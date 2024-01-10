@@ -1,0 +1,127 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:4142894129449721378",
+      "lastPropertyId": "10:4109567542074041793",
+      "name": "Document",
+      "properties": [
+        {
+          "id": "1:6802889313992168944",
+          "name": "id",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "2:4504688540076937807",
+          "name": "numner",
+          "type": 9
+        },
+        {
+          "id": "3:3220232421305464271",
+          "name": "year",
+          "type": 9
+        },
+        {
+          "id": "4:5499231604503128271",
+          "name": "book",
+          "type": 9
+        },
+        {
+          "id": "5:8392339064695521842",
+          "name": "isCaptureStarted",
+          "type": 6
+        },
+        {
+          "id": "6:5712510806812574820",
+          "name": "isCatureCompleted",
+          "type": 6
+        },
+        {
+          "id": "7:55171684222855545",
+          "name": "isEditStarted",
+          "type": 6
+        },
+        {
+          "id": "8:3837316717598438516",
+          "name": "isEditComoleted",
+          "type": 6
+        },
+        {
+          "id": "9:5087627045391276532",
+          "name": "isPdfCreated",
+          "type": 6
+        },
+        {
+          "id": "10:4109567542074041793",
+          "name": "isUploaded",
+          "type": 6
+        }
+      ],
+      "relations": [
+        {
+          "id": "2:3890172104611550167",
+          "name": "images",
+          "targetId": "2:295145425915009118"
+        }
+      ]
+    },
+    {
+      "id": "2:295145425915009118",
+      "lastPropertyId": "6:6855874788568771681",
+      "name": "ImageModel",
+      "properties": [
+        {
+          "id": "1:2919997779641551996",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1024054423254675974",
+          "name": "rawPath",
+          "type": 9
+        },
+        {
+          "id": "3:4412888638781542557",
+          "name": "processedPath",
+          "type": 9
+        },
+        {
+          "id": "4:5456954608447195392",
+          "name": "isProcessed",
+          "type": 1
+        },
+        {
+          "id": "5:7842541415632044196",
+          "name": "pageNo",
+          "type": 6
+        },
+        {
+          "id": "6:6855874788568771681",
+          "name": "documentId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:5656647567838950994",
+          "relationTarget": "Document"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:295145425915009118",
+  "lastIndexId": "1:5656647567838950994",
+  "lastRelationId": "2:3890172104611550167",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [
+    5901218742424889778
+  ],
+  "version": 1
+}
