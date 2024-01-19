@@ -1,10 +1,7 @@
 import 'dart:io';
-
-import 'package:ccms/features/presentation/widgets/contaIner_heading.dart';
+import 'package:ccms/features/presentation/widgets/img_edit_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../providers/selected_imf_file_path_provider.dart';
 
 class ImageEditPage extends ConsumerStatefulWidget {
   const ImageEditPage({super.key});
@@ -15,8 +12,22 @@ class ImageEditPage extends ConsumerStatefulWidget {
 
 class _ImageEditPageState extends ConsumerState<ImageEditPage> {
   static const SizedBox sizedHeight = SizedBox(height: 20);
+
+  static const double editContainrWidth = 250;
+  static const List<int> thresholdItem = [1, 2, 3, 4];
   @override
   Widget build(BuildContext context) {
+    // List<DropdownMenuItem> menuItems = thresholdItem
+    //     .map(
+    //       (e) => DropdownMenuItem(
+    //         child: Text(e.toString()),
+    //         value: e,
+    //         onTap: () {
+    //           print(e);
+    //         },
+    //       ),
+    //     )
+    //     .toList();
     return Scaffold(
       // appBar: AppBar(
       //   automaticallyImplyLeading: false,
@@ -25,17 +36,18 @@ class _ImageEditPageState extends ConsumerState<ImageEditPage> {
       //   actions: const [CloseButtonIcon()],
       // ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Edit image and create copy',
-                  style: Theme.of(context).textTheme.displaySmall),
+              Text('CREATE THE COPY',
+                  style: Theme.of(context).textTheme.headlineSmall),
               InkWell(
                 onTap: () {
                   Navigator.of(context).pop();
                 },
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Icon(
                     Icons.close,
@@ -46,103 +58,96 @@ class _ImageEditPageState extends ConsumerState<ImageEditPage> {
             ],
           ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: 200,
-                // decoration: const BoxDecoration(
-                //   color: Colors.white12,
-                // ),
+              SizedBox(
+                width: editContainrWidth,
                 child: Column(
                   children: [
-                    // const ContainerHeadingWidget(title: 'Editing Tools'),
-                    const SizedBox(height: 10),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        IconButton(
-                            tooltip: 'Rotate 90* left',
-                            onPressed: () {},
-                            icon: Icon(Icons.rotate_90_degrees_ccw)),
-                        IconButton(
-                            tooltip: 'Rotate 5* left',
-                            onPressed: () {},
-                            icon: const Icon(Icons.rotate_left)),
+                        EditBtnContainer(
+                            ontap: () {},
+                            icon: Icons.rotate_90_degrees_ccw,
+                            lable: 'Rotate 90* left'),
+                        EditBtnContainer(
+                            ontap: () {
+                              print('hai');
+                            },
+                            icon: Icons.rotate_90_degrees_cw,
+                            lable: 'Rotate 90* right'),
                       ],
                     ),
-                    sizedHeight,
+                    // sizedHeight,
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        IconButton(
-                            tooltip: 'Rotate 5* right',
-                            onPressed: () {},
-                            icon: const Icon(Icons.rotate_right)),
-                        IconButton(
-                            tooltip: 'Rotate 90* right',
-                            onPressed: () {},
-                            icon: Icon(Icons.rotate_90_degrees_cw))
+                        EditBtnContainer(
+                            lable: 'Rotate 5* left', icon: Icons.rotate_left),
+                        EditBtnContainer(
+                            lable: 'Rotate 5* right',
+                            ontap: () {},
+                            icon: Icons.rotate_right)
                       ],
                     ),
-                    sizedHeight,
+
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        IconButton(
-                            tooltip: 'Crop box',
-                            onPressed: () {},
-                            icon: const Icon(Icons.crop_free)),
-                        IconButton(
-                            tooltip: 'Free crop',
-                            onPressed: () {},
-                            icon: const Icon(Icons.polyline)),
+                        EditBtnContainer(
+                            lable: 'Crop box',
+                            ontap: () {},
+                            icon: Icons.crop_free),
+                        EditBtnContainer(
+                            lable: 'Free crop',
+                            ontap: () {},
+                            icon: Icons.polyline),
                       ],
                     ),
-                    sizedHeight,
+
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        IconButton(
-                            tooltip: 'Undo crop',
-                            onPressed: () {},
-                            icon: const Icon(Icons.undo)),
-                        IconButton(
-                            tooltip: 'redo crop',
-                            onPressed: () {},
-                            icon: const Icon(Icons.redo)),
+                        EditBtnContainer(
+                            lable: 'Undo crop', ontap: () {}, icon: Icons.undo),
+                        EditBtnContainer(
+                            lable: 'redo crop', ontap: () {}, icon: Icons.redo),
                       ],
                     ),
-                    sizedHeight,
+
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        IconButton(
-                            tooltip: 'Previous Image',
-                            onPressed: () {},
-                            icon: const Icon(Icons.arrow_back_ios_new)),
-                        IconButton(
-                            tooltip: 'Next Image',
-                            onPressed: () {},
-                            icon: const Icon(Icons.arrow_forward_ios))
+                        EditBtnContainer(
+                            lable: 'Previous Image',
+                            ontap: () {},
+                            icon: Icons.arrow_back_ios_new),
+                        EditBtnContainer(
+                            lable: 'Next Image',
+                            ontap: () {},
+                            icon: Icons.arrow_forward_ios)
                       ],
                     ),
-                    sizedHeight,
+
                     Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        IconButton(
-                            tooltip: 'Edit Page Number',
-                            onPressed: () {},
-                            icon: const Icon(Icons.edit)),
-                        IconButton(
-                            tooltip: 'Delete',
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                            )),
+                        EditBtnContainer(
+                            lable: 'Edit Page Number',
+                            ontap: () {},
+                            icon: Icons.edit),
+                        EditBtnContainer(
+                          lable: 'Delete',
+                          ontap: () {},
+                          icon: Icons.delete,
+                        ),
                       ],
-                    )
+                    ),
+                    // Container(
+                    //   color: Colors.white10,
+                    //   child: Column(
+                    //     children: [
+                    //       Text('Set Parameters'),
+                    //       // DropdownButton(
+                    //       //     items: menuItems, onChanged: (value) {})
+                    //     ],
+                    //   ),
+                    // )
                   ],
                 ),
               ),

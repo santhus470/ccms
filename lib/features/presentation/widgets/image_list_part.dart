@@ -209,6 +209,7 @@ class _ImageListPArtWidgetState extends ConsumerState<ImageListPArtWidget> {
           bottom: 20,
           right: 10,
           child: FloatingActionButton.extended(
+            heroTag: 'SvaveAll',
             onPressed: () {},
             label: const Text('Save All Images'),
             icon: const Icon(Icons.add),
